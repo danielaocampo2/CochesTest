@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <mat-paginator (page)="onPageChange($event)" [length]="empleados.length" [pageSize]="1"
+                [pageSizeOptions]="[1]">
+            </mat-paginator>
+            <div class="card-body" *ngFor="let empleado of empleadosMostrar">  
+                <b>Nombre: </b> <input class="form-control" #name 
+                    value="{{empleado.name}}">
+                <p></p>
+                <b>telefono: </b> <input class="form-control" #phone 
+                    value="{{empleado.phone}}">
+                <p></p>
+                <b>email: </b> <input class="form-control" #email 
+                value="{{empleado.email}}">
+                <p></p>
+                <b>Estado: </b>
+                <select name="type" class="form-control" #estado>
+                    <option>{{empleado.status==0?"Desactivado":"Activado"}}</option>
+                    <option>{{empleado.status==0?"Activado":"Desactivado"}}</option>
+                </select>
+                <p></p>
+                <button type="submit" color="elegant" class="btn btn-primary" style="background-color:#008cba"
+                    (click)="actualizarEmpleado(empleado.id_user,name.value,phone.value,email.value,estado.value)">
+                    Actualizar Datos
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
